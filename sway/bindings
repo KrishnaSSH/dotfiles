@@ -14,7 +14,6 @@ bindsym $mod+Return exec $term
 bindsym $mod+w kill
 bindsym $mod+d exec $menu
 bindsym $mod+n exec $browser
-bindsym $mod+p exec --no-startup-id "$HOME/.local/scripts/wallpaper.sh --select"
 bindsym $mod+u exec swaylock -c 000000
 
 # Sway Defaults
