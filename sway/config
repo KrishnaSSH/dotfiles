@@ -12,9 +12,7 @@ exec_always autotiling
 
 # pipewire can be launched directly from your window manager or Wayland compositor's startup script.
 # read https://docs.voidlinux.org/config/media/pipewire.html
-exec pipewire
-exec wireplumber
-exec pipewire-pulse
+exec --no-startup-id "$HOME/.local/scripts/start-pipewire.sh"
 
 # You may enable Xwayland for compatibility
 # This will increase resource consumption
@@ -75,23 +73,23 @@ include "$HOME/.config/sway/colorscheme"
 
 # If you want a bar uncomment this section
 
-# bar {
-#   position top
-#   status_command while date +'%Y-%m-%d %X'; do sleep 1; done
-#
-#   colors {
-#     background $base00
-#     separator  $base01
-#     statusline $base04
-#
-#     #                   Border  BG      Text
-#     focused_workspace   $base05 $base0D $base00
-#     active_workspace    $base05 $base03 $base00
-#     inactive_workspace  $base03 $base01 $base05
-#     urgent_workspace    $base08 $base08 $base00
-#     binding_mode        $base00 $base0A $base00
-#   }
-# }
+bar {
+  position top
+  status_command while date +'%Y-%m-%d %X'; do sleep 1; done
+
+  colors {
+    background $base00
+    separator  $base01
+    statusline $base04
+
+    #                   Border  BG      Text
+    focused_workspace   $base05 $base0D $base00
+    active_workspace    $base05 $base03 $base00
+    inactive_workspace  $base03 $base01 $base05
+    urgent_workspace    $base08 $base08 $base00
+    binding_mode        $base00 $base0A $base00
+  }
+}
 
 #                       Border  BG      Text    Ind     Child Border
 client.focused          $base05 $base0D $base00 $base0D $base0D
