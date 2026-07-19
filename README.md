@@ -8,9 +8,11 @@ A machine that sucks less.
 <br>
 [zsh](https://en.wikipedia.org/wiki/Z_shell) - an extensible shell that maintains bash syntax and behaviour.
 <br>
-[htop](https://htop.dev/) - a handy cool looking resource monitor.
-<br>
 [tmux](https://github.com/tmux/tmux) - a highly extensible terminal multiplexer.
+<br>
+[neovim](https://neovim.io) - fork of Vim aiming to improve user experience, plugins and GUIs
+<br>
+[htop](https://htop.dev/) - a handy cool looking resource monitor.
 <br>
 [mpv](https://mpv.io/) - a fast media player that plays almost everything.
 <br>
