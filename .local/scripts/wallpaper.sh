@@ -24,4 +24,3 @@ wallpaper="$wallpaper_dir/$selection"
 
 pkill -f 'swaybg' || true
 swaybg -i "$wallpaper" &
-
