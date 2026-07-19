@@ -7,7 +7,7 @@
 bindsym $mod+o exec --no-startup-id "$HOME/.local/scripts/theme.sh"
 
 # Press $MOD+P to change the Wallpaper
-bindsym $mod+p exec --no-startup-id "$HOME/.local/scripts/wallpaper.sh --select"
+bindsym $mod+p exec --no-startup-id "$HOME/.local/scripts/wallpaper.sh -p"
 
 
 bindsym $mod+Return exec $term

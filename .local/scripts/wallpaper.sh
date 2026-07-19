@@ -7,20 +7,16 @@
 
 set -euo pipefail
 
-wallpaper_dir="$HOME/.local/share/wallpapers"
-state_file="$HOME/.local/state/wallpaper/current"
+dir="$HOME/.local/share/wallpapers"
+state="$HOME/.local/state/wallpaper/current"
 
-mkdir -p "$(dirname "$state_file")"
+mkdir -p "${state%/*}"
 
-if [ ! -f "$state_file" ]; then
-  selection="$(ls -1 "$wallpaper_dir" | wmenu -i -l 10)"
-  [ -n "${selection}" ] || exit 0
-  printf '%s\n' "$selection" > "$state_file"
+if [ "${1:-}" = "-p" ] || [ ! -f "$state" ]; then
+    w=$(find "$dir" -maxdepth 1 -type f -printf '%f\n' | wmenu -i -l 10)
+    [ -n "$w" ] || exit 0
+    printf '%s\n' "$w" > "$state"
 fi
 
-selection="$(cat "$state_file")"
-wallpaper="$wallpaper_dir/$selection"
-[ -f "$wallpaper" ] || exit 1
-
-pkill -f 'swaybg' || true
-swaybg -i "$wallpaper" &
+pkill swaybg 2>/dev/null || true
+swaybg -i "$dir/$(cat "$state")" &
