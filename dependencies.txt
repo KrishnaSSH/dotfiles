@@ -2,12 +2,16 @@ adwaita-icon-theme
 bash
 brightnessctl
 foot
+htop
+imv
+mpv
 neovim
 sway
 swaybg
 swayidle
 swaylock
 tmux
+wmenu
 xdg-desktop-portal
 xdg-desktop-portal-wlr
 zsh
