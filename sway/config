@@ -1,0 +1,101 @@
+# https://github.com/krishnassh/dotfiles
+# Author: KrishnaSSH
+# LICENSE: CC0 1.0 Universal
+# You may get a copy of this license from https://creativecommons.org/publicdomain/zero/1.0/legalcode.txt
+
+
+# autotiling-rs https://github.com/ammgws/autotiling-rs 
+# compile it and add it to your path.
+# alternatively https://github.com/nwg-piotr/autotiling can be used 
+# remove this line if you don't want autotiling
+exec_always autotiling 
+
+# pipewire can be launched directly from your window manager or Wayland compositor's startup script.
+# read https://docs.voidlinux.org/config/media/pipewire.html
+exec pipewire
+exec wireplumber
+exec pipewire-pulse
+
+# You may enable Xwayland for compatibility
+# This will increase resource consumption
+xwayland disable
+
+# Cursor theme 
+seat seat0 xcursor_theme Adwaita 24
+
+set $mod Mod4
+set $left h
+set $down j
+set $up k
+set $right l
+
+# Default applications
+# Edit this section to propose your own ones
+set $term foot
+set $browser firefox-wayland
+set $menu wmenu-run -l 10
+
+
+floating_modifier $mod normal
+
+# Window Manager Font and it's size
+# Can be changed by editing the below
+font pango:Sans 8
+
+# Borders and gaps
+# Can be changed by editing the below
+default_border pixel 2
+default_floating_border pixel 2
+gaps inner 4
+gaps outer 4
+
+# Wallpaper: keeps swaybg active
+exec_always --no-startup-id  ~/.local/scripts/wallpaper.sh
+
+# Auto Sway Idle
+exec --no-startup-id "$HOME/.local/scripts/swayidle.sh"
+
+
+
+# Input configuration
+# You may purge this section if you don't use a touchpad 
+# I do occasionally need to use it because I don't plug in a mouse
+
+input type:touchpad {
+   dwt enabled
+   tap enabled
+   natural_scroll enabled
+   middle_emulation enabled
+}
+
+# Include Bindings and Colorscheme 
+include /etc/sway/config.d/*
+include "$HOME/.config/sway/bindings"
+include "$HOME/.config/sway/colorscheme"
+
+# If you want a bar uncomment this section
+
+# bar {
+#   position top
+#   status_command while date +'%Y-%m-%d %X'; do sleep 1; done
+#
+#   colors {
+#     background $base00
+#     separator  $base01
+#     statusline $base04
+#
+#     #                   Border  BG      Text
+#     focused_workspace   $base05 $base0D $base00
+#     active_workspace    $base05 $base03 $base00
+#     inactive_workspace  $base03 $base01 $base05
+#     urgent_workspace    $base08 $base08 $base00
+#     binding_mode        $base00 $base0A $base00
+#   }
+# }
+
+#                       Border  BG      Text    Ind     Child Border
+client.focused          $base05 $base0D $base00 $base0D $base0D
+client.focused_inactive $base01 $base01 $base05 $base03 $base01
+client.unfocused        $base01 $base00 $base05 $base01 $base01
+client.urgent           $base08 $base08 $base00 $base08 $base08
+
