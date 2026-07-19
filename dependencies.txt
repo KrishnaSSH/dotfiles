@@ -1,0 +1,15 @@
+adwaita-icon-theme
+bash
+brightnessctl
+foot
+neovim
+sway
+swaybg
+swayidle
+swaylock
+tmux
+xdg-desktop-portal
+xdg-desktop-portal-wlr
+zsh
+zsh-autosuggestions
+zsh-syntax-highlighting
