@@ -1,5 +1,6 @@
 ## dotfiles
 A machine that sucks less.
+Read [installation guide](docs/Installation-Guide.md) and [user guide](docs/Guide.md).
 <br>
 ### Toolkit
 [sway](https://swaywm.org/) - a drop in replacement of i3 for wayland.
