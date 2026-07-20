@@ -4,6 +4,11 @@
 # You may get a copy of this license from https://creativecommons.org/publicdomain/zero/1.0/legalcode.txt
 
 export PATH="$HOME/.local/bin:$PATH"
+# Source - https://stackoverflow.com/a/71271754
+# Posted by user18295742, modified by community. See post 'Timeline' for change history
+# Retrieved 2026-07-20, License - CC BY-SA 4.0
+
+export ZSH_COMPDUMP=$ZSH/cache/.zcompdump-$HOST
 
 autoload -U colors && colors	# Load colors
 PS1="%B%{$fg[red]%}[%{$fg[yellow]%}%n%{$fg[green]%}@%{$fg[blue]%}%M %{$fg[magenta]%}%~%{$fg[red]%}]%{$reset_color%}$%b "
