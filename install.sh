@@ -8,6 +8,7 @@
 set -euo pipefail
 
 echo 'creating alias file'
+mkdir -p "$HOME/.config/shell"
 touch "$HOME/.config/shell/aliasrc"
 
 echo 'creating directories'
