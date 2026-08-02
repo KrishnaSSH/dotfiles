@@ -19,6 +19,7 @@ mkdir -p "$HOME/.config/shell"
 
 echo 'copying scripts'
 cp -r .local/scripts/. "$HOME/.local/scripts/"
+chmod +x "$HOME/.local/scripts/*.sh"
 
 echo 'copying foot config'
 cp -r foot/. "$HOME/.config/foot/"
