@@ -48,3 +48,6 @@ bindkey -v '^?' backward-delete-char
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 
+# Set the default manpager to nvim
+# has certain benefits over less 
+export MANPAGER="nvim +Man!"
