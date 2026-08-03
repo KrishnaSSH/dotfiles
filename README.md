@@ -13,6 +13,8 @@ Read [installation guide](docs/Installation-Guide.md) and [user guide](docs/Guid
 <br>
 [neovim](https://neovim.io) - fork of Vim aiming to improve user experience, plugins and GUIs
 <br>
+[emacs](https://www.gnu.org/savannah-checkouts/gnu/emacs/emacs.html) - an highly extensible, customizable, free/libre lisp interpreter.
+<br>
 [htop](https://htop.dev/) - a handy cool looking resource monitor.
 <br>
 [mpv](https://mpv.io/) - a fast media player that plays almost everything.
