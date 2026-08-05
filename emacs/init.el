@@ -10,7 +10,7 @@
 (tool-bar-mode -1)      ; disable the toolbar
 (tooltip-mode -1)       ; disable tooltips
 (set-fringe-mode 10)    ; more room
-(menu-bar-mode -1)           ; disable menu bar
+(menu-bar-mode -1)      ; disable menu bar
 
 ;; tilda files in ~/.local/state/emacs/backups/
 (defvar backup-dir "~/.local/state/emacs/backups/")
@@ -24,7 +24,7 @@
 (global-display-line-numbers-mode 1)
 
 ;; font faces
-(set-face-attribute 'default nil :font "Iosevka" :height 200)
+(set-face-attribute 'default nil :font "JetBrainsMono Nerd Font" :height 170)
 
 ;; initializing package sources
 (require 'package)
@@ -39,6 +39,10 @@
 (require 'use-package)
 (setq use-package-always-ensure t)
 
+
+;; standard emacs bindings
+;; todo
+
 ;; evil mode
 (setq evil-want-integration t)
 (setq evil-want-keybinding nil) 
@@ -47,22 +51,63 @@
   :ensure t
   :init
   :config
-  (evil-mode 1))
+  (evil-mode 1)
+  ;; evil keymaps
+  (evil-set-leader 'normal (kbd "SPC"))
+  (evil-define-key 'normal 'global (kbd "<leader>e") 'find-file)
+  (evil-define-key 'normal 'global (kbd "<leader>o") 'other-window)
+  (evil-define-key 'normal 'global (kbd "<leader>x") 'delete-window)
+  (evil-define-key 'normal 'global (kbd "<leader>t") 'my/vterm-down)
+  (evil-define-key 'normal 'global (kbd "<leader>k") 'kill-buffer)
+  (evil-define-key 'normal 'global (kbd "<leader>b") 'switch-to-buffer)
+  (evil-define-key 'normal 'global (kbd "<leader>n") 'next-buffer)
+  (evil-define-key 'normal 'global (kbd "<leader>p") 'previous-buffer)
+  (evil-define-key 'normal 'global (kbd "<leader>r") 'eval-buffer)
+
+  ;; swap ; and : in normal mode
+  (evil-define-key 'normal 'global (kbd ";") 'evil-ex)
+  (evil-define-key 'normal 'global (kbd ":") 'evil-repeat-find-char)
+
+  )
 
 (use-package evil-collection
   :ensure t
   :after evil
   :config
-  (evil-collection-init))
+  (evil-collection-init)
+;  (evil-set-initial-state 'vterm-mode 'emacs))
+  )
 
 ;; theme
 (use-package gruber-darker-theme
-  :init
+  :ensure t
+  :config
   (load-theme 'gruber-darker t))
 
 ;; discord rpc
 (use-package elcord
-  :config
-  (elcord-mode))
+  :hook (after-init . elcord-mode))
 
-(load-file custom-file)
+;; vterm
+(use-package vterm)
+(add-hook 'vterm-mode-hook
+          (lambda ()
+            (set-process-query-on-exit-flag (get-buffer-process (current-buffer)) nil)))
+
+;; my functions
+
+(defun my/vterm-down ()
+  "Open vterm window below the current buffer"
+  (interactive)
+  (split-window-below)
+  (other-window 1)
+  (vterm))
+
+(defun my/vterm-right ()
+  "Open vterm window side to the current buffer"
+  (interactive)
+  (split-window-right)
+  (other-window 1)
+  (vterm))
+
+(load custom-file 'noerror)
