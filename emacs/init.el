@@ -12,6 +12,9 @@
 (set-fringe-mode 10)    ; more room
 (menu-bar-mode -1)      ; disable menu bar
 
+(require 'ido)
+(ido-mode t)
+
 ;; tilda files in ~/.local/state/emacs/backups/
 (defvar backup-dir "~/.local/state/emacs/backups/")
 ;; create the directory if it doesn't exist.
@@ -28,9 +31,10 @@
 
 ;; initializing package sources
 (require 'package)
-(setq package-archives '(("melpa"  . "https://melpa.org/packages/")
-			 ("org"  . "https://orgmode.org/elpa/")
-			 ("elpa"  . "https://elpa.gnu.org/")))
+(setq package-archives '(("gnu" . "https://elpa.gnu.org/packages/")
+                         ("melpa" . "https://stable.melpa.org/packages/")
+                         ("melpa-devel" . "https://melpa.org/packages/")))
+
 (package-initialize)
 (unless package-archive-contents
   (package-refresh-contents))
@@ -40,12 +44,17 @@
 (setq use-package-always-ensure t)
 
 
+;; theme
+(use-package gruber-darker-theme
+  :ensure t
+  :config
+  (load-theme 'gruber-darker t))
+
 ;; standard emacs bindings
+
 ;; todo
 
 ;; evil mode
-(setq evil-want-integration t)
-(setq evil-want-keybinding nil) 
 
 (use-package evil
   :ensure t
@@ -58,6 +67,7 @@
   (evil-define-key 'normal 'global (kbd "<leader>o") 'other-window)
   (evil-define-key 'normal 'global (kbd "<leader>x") 'delete-window)
   (evil-define-key 'normal 'global (kbd "<leader>t") 'my/vterm-down)
+  (evil-define-key 'normal 'global (kbd "<leader>c") 'compile)
   (evil-define-key 'normal 'global (kbd "<leader>k") 'kill-buffer)
   (evil-define-key 'normal 'global (kbd "<leader>b") 'switch-to-buffer)
   (evil-define-key 'normal 'global (kbd "<leader>n") 'next-buffer)
@@ -70,6 +80,8 @@
 
   )
 
+(setq evil-want-integration t)
+(setq evil-want-keybinding nil) 
 (use-package evil-collection
   :ensure t
   :after evil
@@ -78,11 +90,6 @@
 ;  (evil-set-initial-state 'vterm-mode 'emacs))
   )
 
-;; theme
-(use-package gruber-darker-theme
-  :ensure t
-  :config
-  (load-theme 'gruber-darker t))
 
 ;; discord rpc
 (use-package elcord
@@ -93,6 +100,9 @@
 (add-hook 'vterm-mode-hook
           (lambda ()
             (set-process-query-on-exit-flag (get-buffer-process (current-buffer)) nil)))
+
+
+;(use-package magit)
 
 ;; my functions
 
@@ -110,4 +120,7 @@
   (other-window 1)
   (vterm))
 
+;(defun
+
 (load custom-file 'noerror)
+
