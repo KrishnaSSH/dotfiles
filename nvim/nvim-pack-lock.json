@@ -1,0 +1,16 @@
+{
+  "plugins": {
+    "gruber-darker.nvim": {
+      "rev": "9b68f84bfd6c1278fef2143802ca40c60f2471c0",
+      "src": "https://github.com/blazkowolf/gruber-darker.nvim"
+    },
+    "gruvbox.nvim": {
+      "rev": "154eb5ff5b96d0641307113fa385eaf0d36d9796",
+      "src": "https://github.com/ellisonleao/gruvbox.nvim"
+    },
+    "presence.nvim": {
+      "rev": "87c857a56b7703f976d3a5ef15967d80508df6e6",
+      "src": "https://github.com/andweeb/presence.nvim"
+    }
+  }
+}

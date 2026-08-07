@@ -4,6 +4,9 @@ vim.opt.rnu = true
 vim.opt.clipboard = "unnamedplus"
 vim.opt.termguicolors = true
 
+vim.opt.ignorecase = true  
+vim.opt.smartcase = true   
+
 vim.opt.tabstop = 4
 vim.opt.softtabstop = 4
 vim.opt.shiftwidth = 4
@@ -14,3 +17,11 @@ vim.opt.scrolloff = 8
 vim.opt.hlsearch = false
 vim.opt.incsearch = true
 
+vim.opt.wrap = false           
+vim.opt.swapfile = false       
+vim.opt.backup = false         
+vim.opt.undofile = true        
+vim.opt.updatetime = 50        
+
+vim.g.netrw_banner = 0
+vim.g.netrw_bufsettings = "noma nomod nu rnu nobl nowrap ro"
